@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/providers.dart/root.dart';
 import 'package:npskeleton/widgets/base_scaffold.dart';
 import 'package:provider/provider.dart';
 
 class SubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<Users>(context);
-    final user = Provider.of<User>(context);
+    var data = Provider.of<RootProvider>(context).user;
 
     return BodyScreen(
       title: "둘째화면!",
@@ -15,24 +14,24 @@ class SubPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            user == null
-                ? Text(
-                    'Loading..',
-                  )
-                : Text(
-                    user.firstName,
-                  ),
             RaisedButton(
               child: Text("Get Users"),
-              onPressed: () {},
+              onPressed: () {
+                //ReqResProvider().loadUser(23);
+              },
             ),
             data == null
                 ? Text(
                     'Loading..',
                   )
-                : Text(
-                    data.users[0].firstName,
-                  ),
+                : data.response.statuscode == 200
+                    ? Text(
+                        //  data.users[0].firstName,
+                        data.firstName,
+                      )
+                    : Text(
+                        data.response.errormsg ?? "ERROR",
+                      ),
           ],
         ),
       ),

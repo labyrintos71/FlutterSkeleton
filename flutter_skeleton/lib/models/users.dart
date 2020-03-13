@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:npskeleton/models/dto.dart';
 
 part 'users.g.dart';
 
 @JsonSerializable()
-class User {
+class User extends BaseDTO {
   num id;
 
   String email;
@@ -17,12 +18,16 @@ class User {
   String avatar;
 
   User(this.id, this.email, this.firstName, this.lastName, this.avatar);
+
+  User.empty(ResponseHeader header) {
+    response = header;
+  }
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
 
 @JsonSerializable()
-class Users {
+class Users extends BaseDTO {
   num page;
 
   @JsonKey(name: 'per_page')
@@ -35,9 +40,11 @@ class Users {
 
   @JsonKey(name: 'data')
   List<User> users = [];
-
+  
   Users(this.page, this.personCount, this.total, this.totalPages, this.users);
-
+  Users.empty(ResponseHeader header) {
+    response = header;
+  }
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
   Map<String, dynamic> toJson() => _$UsersToJson(this);
 }

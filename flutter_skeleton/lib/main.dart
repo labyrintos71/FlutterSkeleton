@@ -1,9 +1,13 @@
+import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/providers.dart/root.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
 import 'package:npskeleton/screens/subpage.dart';
+import 'package:npskeleton/screens/usesream.dart';
+import 'package:npskeleton/viewmodels/authservice.dart';
 import 'package:npskeleton/widgets/base_scaffold.dart';
 import 'package:provider/provider.dart';
 
@@ -28,25 +32,41 @@ class LaunchApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
-        FutureProvider<Users>(create: (_) => ReqResProvider().loadUsers()),
+        ChangeNotifierProvider<RootProvider>(create: (_) => RootProvider()),
+        ProxyProvider<RootProvider, ReqResProvider>(
+          update: (BuildContext context, RootProvider root,
+                  ReqResProvider previous) =>
+              ReqResProvider(root),
+        ),
+        ProxyProvider<ReqResProvider, AuthenticationService>(
+          update: (BuildContext context, ReqResProvider root,
+                  AuthenticationService previous) =>
+              AuthenticationService(root),
+        ),
         StreamProvider<User>(
-          create: (_) => ReqResProvider().loaduser(),
+          create: (_) =>
+              Provider.of<AuthenticationService>(_, listen: false).user,
         )
+        // StreamProvider<User>(
+        //   create: (_) => ReqResProvider().loaduser(),
+        // )
       ],
-      child: HomePage(),
+      child: InitPage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class InitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeProvider>(context);
-    return MaterialApp(
-      title: 'Flutter Skeleton',
-      theme: theme.getTheme(),
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
+    return BackGestureWidthTheme(
+      child: MaterialApp(
+        title: 'Flutter Skeleton',
+        theme: theme.getTheme(),
+        debugShowCheckedModeBanner: false,
+        home: MainPage(),
+      ),
     );
   }
 }
@@ -66,13 +86,16 @@ class MainPage extends StatelessWidget {
             ),
             Text(
               '123',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.title,
             ),
             RaisedButton(
               child: Text("다음 페이지로 이동"),
-              onPressed: () async {
+              onPressed: () {
+                // Provider.of<ReqResProvider>(context, listen: false).loadUser(2);
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => SubPage()));
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SubPage()));
+                    MaterialPageRoute(builder: (context) => StreamPage()));
               },
             )
           ],
