@@ -48,5 +48,5 @@ class Users extends BaseDTO {
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
   Map<String, dynamic> toJson() => _$UsersToJson(this);
 }
-//flutter pub run build_runner build : 1회 빌드
+//flutter pub run build_runner build--delete-conflicting-outputs : 1회 빌드
 //flutter pub run build_runner watch : 파일 변경이 발생하면 빌드

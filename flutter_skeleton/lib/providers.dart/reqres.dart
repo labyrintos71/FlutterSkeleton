@@ -27,7 +27,8 @@ class ReqResProvider {
   }
 
   Future<User> creatUser() async {
-    var response = await http.get(baseurl + "/users");
+    var response = await http.post(baseurl + "/register",
+        body: {"email": "eve.holt@reqres.in", "password": "pistol"});
 
     if (response.statusCode != 200) return User.empty(errorMessage(response));
 
