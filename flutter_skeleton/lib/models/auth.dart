@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:npskeleton/models/dto.dart';
+import 'package:npskeleton/models/base_object.dart';
 
 part 'auth.g.dart';
 
@@ -16,4 +16,19 @@ class AuthUser extends BaseDTO {
   factory AuthUser.fromJson(Map<String, dynamic> json) =>
       _$AuthUserFromJson(json);
   Map<String, dynamic> toJson() => _$AuthUserToJson(this);
+}
+
+@JsonSerializable()
+class AuthResult extends BaseDTO {
+  num id;
+  String token;
+
+  AuthResult(this.id, this.token);
+
+  AuthResult.empty(ResponseHeader header) {
+    response = header;
+  }
+  factory AuthResult.fromJson(Map<String, dynamic> json) =>
+      _$AuthResultFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthResultToJson(this);
 }

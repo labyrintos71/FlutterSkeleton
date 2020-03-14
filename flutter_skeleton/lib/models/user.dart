@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:npskeleton/models/dto.dart';
+import 'package:npskeleton/models/base_object.dart';
 
-part 'users.g.dart';
+part 'user.g.dart';
 
 @JsonSerializable()
 class User extends BaseDTO {
@@ -40,7 +40,7 @@ class Users extends BaseDTO {
 
   @JsonKey(name: 'data')
   List<User> users = [];
-  
+
   Users(this.page, this.personCount, this.total, this.totalPages, this.users);
   Users.empty(ResponseHeader header) {
     response = header;
@@ -48,5 +48,17 @@ class Users extends BaseDTO {
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
   Map<String, dynamic> toJson() => _$UsersToJson(this);
 }
-//flutter pub run build_runner build--delete-conflicting-outputs : 1회 빌드
-//flutter pub run build_runner watch : 파일 변경이 발생하면 빌드
+
+@JsonSerializable()
+class PeoPle extends BaseDTO {
+  num name;
+
+  num job;
+
+  PeoPle(this.name, this.job);
+  PeoPle.empty(ResponseHeader header) {
+    response = header;
+  }
+  factory PeoPle.fromJson(Map<String, dynamic> json) => _$PeoPleFromJson(json);
+  Map<String, dynamic> toJson() => _$PeoPleToJson(this);
+}

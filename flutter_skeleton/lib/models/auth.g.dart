@@ -17,3 +17,16 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
     };
+
+AuthResult _$AuthResultFromJson(Map<String, dynamic> json) {
+  return AuthResult(
+    json['id'] as num,
+    json['token'] as String,
+  );
+}
+
+Map<String, dynamic> _$AuthResultToJson(AuthResult instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'token': instance.token,
+    };

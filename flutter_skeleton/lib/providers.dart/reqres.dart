@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:npskeleton/models/dto.dart';
-import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/models/auth.dart';
+import 'package:npskeleton/models/base_object.dart';
+import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/providers.dart/root.dart';
 
 class ReqResProvider {
@@ -26,15 +27,6 @@ class ReqResProvider {
     return User.fromJson(jsonDecode(response.body)["data"]);
   }
 
-  Future<User> creatUser() async {
-    var response = await http.post(baseurl + "/register",
-        body: {"email": "eve.holt@reqres.in", "password": "pistol"});
-
-    if (response.statusCode != 200) return User.empty(errorMessage(response));
-
-    return User.fromJson(jsonDecode(response.body));
-  }
-
   Future<Users> loadUsers() async {
     var response = await http.get(
       baseurl + "/users?page=2",
@@ -43,5 +35,14 @@ class ReqResProvider {
     if (response.statusCode != 200) return Users.empty(errorMessage(response));
 
     return Users.fromJson(jsonDecode(response.body));
+  }
+
+  Future<AuthResult> registerUser(AuthUser user) async {
+    var response = await http.post(baseurl + "/register", body: user.toJson());
+
+    if (response.statusCode != 200)
+      return AuthResult.empty(errorMessage(response));
+
+    return AuthResult.fromJson(jsonDecode(response.body));
   }
 }

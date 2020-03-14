@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 
 class AuthenticationService {

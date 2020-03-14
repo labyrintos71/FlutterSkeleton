@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/viewmodels/authservice.dart';
 import 'package:npskeleton/widgets/base_scaffold.dart';
 import 'package:provider/provider.dart';

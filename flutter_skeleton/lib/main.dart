@@ -1,7 +1,8 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:npskeleton/models/users.dart';
+import 'package:npskeleton/models/auth.dart';
+import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/providers.dart/root.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
@@ -89,12 +90,19 @@ class MainPage extends StatelessWidget {
             ),
             RaisedButton(
               child: Text("다음 페이지로 이동"),
-              onPressed: () {
-                // Provider.of<ReqResProvider>(context, listen: false).loadUser(2);
+              onPressed: () async {
+                print(AuthUser("eve.holt@reqres.in", "pistol")
+                    .toJson()
+                    .toString());
+                var result =
+                    await Provider.of<ReqResProvider>(context, listen: false)
+                        .registerUser(AuthUser("eve.holt@reqres.in", "pistol"));
+                print(result.token);
+                //   Provider.of<ReqResProvider>(context, listen: false).loadUser(2);
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => SubPage()));
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => StreamPage()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => StreamPage()));
               },
             )
           ],
