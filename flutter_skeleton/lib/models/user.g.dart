@@ -44,15 +44,3 @@ Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
       'total_pages': instance.totalPages,
       'data': instance.users,
     };
-
-PeoPle _$PeoPleFromJson(Map<String, dynamic> json) {
-  return PeoPle(
-    json['name'] as num,
-    json['job'] as num,
-  );
-}
-
-Map<String, dynamic> _$PeoPleToJson(PeoPle instance) => <String, dynamic>{
-      'name': instance.name,
-      'job': instance.job,
-    };

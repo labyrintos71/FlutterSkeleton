@@ -2,6 +2,7 @@ import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:npskeleton/models/auth.dart';
+import 'package:npskeleton/models/people.dart';
 import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/providers.dart/root.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
@@ -91,13 +92,13 @@ class MainPage extends StatelessWidget {
             RaisedButton(
               child: Text("다음 페이지로 이동"),
               onPressed: () async {
-                print(AuthUser("eve.holt@reqres.in", "pistol")
+                print(PeoPle("morpheus", "leader")
                     .toJson()
                     .toString());
                 var result =
                     await Provider.of<ReqResProvider>(context, listen: false)
-                        .registerUser(AuthUser("eve.holt@reqres.in", "pistol"));
-                print(result.token);
+                        .createUser(PeoPle("morpheus", "leader"));
+                print(result.id);
                 //   Provider.of<ReqResProvider>(context, listen: false).loadUser(2);
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => SubPage()));

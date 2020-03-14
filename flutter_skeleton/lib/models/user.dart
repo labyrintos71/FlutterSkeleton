@@ -48,17 +48,3 @@ class Users extends BaseDTO {
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
   Map<String, dynamic> toJson() => _$UsersToJson(this);
 }
-
-@JsonSerializable()
-class PeoPle extends BaseDTO {
-  num name;
-
-  num job;
-
-  PeoPle(this.name, this.job);
-  PeoPle.empty(ResponseHeader header) {
-    response = header;
-  }
-  factory PeoPle.fromJson(Map<String, dynamic> json) => _$PeoPleFromJson(json);
-  Map<String, dynamic> toJson() => _$PeoPleToJson(this);
-}

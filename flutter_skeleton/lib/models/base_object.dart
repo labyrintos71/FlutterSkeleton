@@ -1,11 +1,12 @@
+import 'package:http/http.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 class ResponseHeader {
   num statuscode;
   String errormsg;
-  ResponseHeader.error(num status, String errormsg) {
-    statuscode = status;
-    errormsg = errormsg;
+  ResponseHeader.error(Response header) {
+    statuscode = header.statusCode;
+    errormsg = header.body;
   }
   ResponseHeader.success() {
     statuscode = 200;
