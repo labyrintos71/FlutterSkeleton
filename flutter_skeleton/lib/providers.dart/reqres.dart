@@ -80,9 +80,8 @@ class ReqResProvider {
   }
 
   //DELETE
-  Future<PeoPle> deleteUser(PeoPle people) async {
-    var response =
-        await http.patch(baseurl + "/users/2", body: people.toJson());
+  Future<PeoPle> deleteUser() async {
+    var response = await http.delete(baseurl + "/users/2");
 
     if (response.statusCode != 204)
       return PeoPle.empty(ResponseHeader.error(response));
