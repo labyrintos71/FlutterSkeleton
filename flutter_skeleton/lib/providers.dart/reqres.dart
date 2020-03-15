@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:npskeleton/models/auth.dart';
 import 'package:npskeleton/models/base_object.dart';
 import 'package:npskeleton/models/people.dart';
@@ -22,7 +21,6 @@ class ReqResProvider {
       return User.empty(ResponseHeader.error(response));
 
     root.setUser(User.fromJson(jsonDecode(response.body)["data"]));
-
     return User.fromJson(jsonDecode(response.body)["data"]);
   }
 

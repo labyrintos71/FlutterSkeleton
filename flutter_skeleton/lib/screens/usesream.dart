@@ -12,7 +12,7 @@ class StreamPage extends StatelessWidget {
 
     return Consumer<User>(
       builder: (BuildContext context, User data, Widget child) {
-        return BodyScreen(
+        return BaseScreen(
           title: "둘째화면!",
           body: Center(
             child: Column(

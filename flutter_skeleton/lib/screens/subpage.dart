@@ -8,7 +8,7 @@ class SubPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var data = Provider.of<RootProvider>(context).user;
 
-    return BodyScreen(
+    return BaseScreen(
       title: "둘째화면!",
       body: Center(
         child: Column(
