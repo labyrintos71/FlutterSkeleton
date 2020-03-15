@@ -10,21 +10,21 @@ class FadeInUi extends StatelessWidget {
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            FadeIn(1.0, HeaderPlaceholder()),
+            FadeInY(1.0, HeaderPlaceholder()),
             WhitespaceSeparator(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                FadeIn(2, CirclePlaceholder()),
-                FadeIn(2.33, CirclePlaceholder()),
-                FadeIn(2.66, CirclePlaceholder())
+                FadeInY(2, CirclePlaceholder()),
+                FadeInY(2.33, CirclePlaceholder()),
+                FadeInY(2.66, CirclePlaceholder())
               ],
             ),
             WhitespaceSeparator(),
-            FadeIn(4, CardPlaceholder()),
-            FadeIn(4.5, CardPlaceholder()),
-            FadeIn(5, CardPlaceholder()),
-            FadeIn(5.5, CardPlaceholder())
+            FadeInY(4, CardPlaceholder()),
+            FadeInY(4.5, CardPlaceholder()),
+            FadeInY(5, CardPlaceholder()),
+            FadeInY(5.5, CardPlaceholder())
           ],
         ),
       ),
@@ -32,11 +32,11 @@ class FadeInUi extends StatelessWidget {
   }
 }
 
-class FadeIn extends StatelessWidget {
+class FadeInX extends StatelessWidget {
   final double delay;
   final Widget child;
 
-  FadeIn(this.delay, this.child);
+  FadeInX(this.delay, this.child);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,36 @@ class FadeIn extends StatelessWidget {
         opacity: animation["opacity"],
         child: Transform.translate(
             offset: Offset(animation["translateX"], 0), child: child),
+      ),
+    );
+  }
+}
+
+class FadeInY extends StatelessWidget {
+  final double delay;
+  final Widget child;
+
+  FadeInY(this.delay, this.child);
+
+  @override
+  Widget build(BuildContext context) {
+    final tween = MultiTrackTween([
+      Track("opacity")
+          .add(Duration(milliseconds: 500), Tween(begin: 0.0, end: 1.0)),
+      Track("translateY").add(
+          Duration(milliseconds: 500), Tween(begin: 80.0, end: 0.0),
+          curve: Curves.easeOut)
+    ]);
+
+    return ControlledAnimation(
+      delay: Duration(milliseconds: (300 * delay).round()),
+      duration: tween.duration,
+      tween: tween,
+      child: child,
+      builderWithChild: (context, child, animation) => Opacity(
+        opacity: animation["opacity"],
+        child: Transform.translate(
+            offset: Offset(0, animation["translateY"]), child: child),
       ),
     );
   }

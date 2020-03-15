@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:npskeleton/examples/fade_in_ui.dart';
 import 'package:npskeleton/examples/load_stuff_button.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
@@ -36,10 +37,8 @@ class MainPage extends StatelessWidget {
                 //     MaterialPageRoute(builder: (context) => SubPage()));
                 Provider.of<UIProvider>(context, listen: false)
                     .initLoadButton();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LoadStuffButtonDemo()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FadeInUiDemo()));
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => StreamPage()));
               },
