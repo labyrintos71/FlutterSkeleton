@@ -46,7 +46,7 @@ class TextMont extends StatelessWidget {
       text,
       style: TextStyle(
           color: color,
-          fontSize: size,
+          fontSize: size.toDouble(),
           fontFamily: "Montserrat",
           fontWeight: getFontWeight(type)),
     );
@@ -67,7 +67,7 @@ class TextNoto extends StatelessWidget {
       text,
       style: TextStyle(
           color: color,
-          fontSize: size,
+          fontSize: size.toDouble(),
           fontFamily: "NotoSans",
           fontWeight: getFontWeight(type)),
     );
@@ -88,7 +88,7 @@ class TextNunito extends StatelessWidget {
       text,
       style: TextStyle(
           color: color,
-          fontSize: size,
+          fontSize: size.toDouble(),
           fontFamily: "NunitoSans",
           fontWeight: getFontWeight(type)),
     );

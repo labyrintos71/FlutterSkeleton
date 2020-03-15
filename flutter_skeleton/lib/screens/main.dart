@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:npskeleton/examples/fade_in_ui.dart';
-import 'package:npskeleton/examples/load_stuff_button.dart';
+import 'package:npskeleton/examples/testpage.dart';
+import 'package:npskeleton/examples/text_page.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
 import 'package:npskeleton/providers.dart/ui.dart';
 import 'package:npskeleton/widgets/base_scaffold.dart';
-import 'package:npskeleton/widgets/text.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -25,7 +24,6 @@ class MainPage extends StatelessWidget {
               '123',
               style: Theme.of(context).textTheme.title,
             ),
-            TextNoto("안녕",16,type: TextType.Bold,);
             RaisedButton(
               child: Text("다음 페이지로 이동"),
               onPressed: () {
@@ -40,7 +38,7 @@ class MainPage extends StatelessWidget {
                 Provider.of<UIProvider>(context, listen: false)
                     .initLoadButton();
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FadeInUiDemo()));
+                    MaterialPageRoute(builder: (context) => TextFormPage()));
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => StreamPage()));
               },
