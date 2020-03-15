@@ -56,16 +56,19 @@ class TextFormPage extends StatelessWidget {
       RequiredValidator(errorText: 'password is required'),
       MinLengthValidator(8,
           errorText: 'password must be at least 8 digits long'),
-      PatternValidator(r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~+]).{8,}$',//영소문자/숫자/특수문자 조합 8자 이상
+      PatternValidator(
+          r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~+]).{8,}$', //영소문자/숫자/특수문자 조합 8자 이상
           errorText: 'passwords must have at least one special character')
     ]);
-     
+
     final eamilField = TextFormField(
       onFieldSubmitted: (str) => _formKey.currentState.validate(),
       validator: passwordValidator,
       maxLength: 30,
       obscureText: false,
-      onChanged: (String value) {},
+      onChanged: (String value) {
+        _formKey.currentState.validate();
+      },
       keyboardType: TextInputType.text,
       style:
           TextStyle(color: Colors.black, fontFamily: "NotoSans", fontSize: 18),
