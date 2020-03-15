@@ -5,6 +5,7 @@ import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
 import 'package:npskeleton/providers.dart/ui.dart';
 import 'package:npskeleton/widgets/base_scaffold.dart';
+import 'package:npskeleton/widgets/text.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -17,7 +18,7 @@ class MainPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            TextNotoB(
               'https://reqres.in/ REST API TEST',
             ),
             Text(

@@ -23,5 +23,29 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  
+  assets:
+    - assets/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.ttf
+        - asset: assets/fonts/Montserrat-Light.ttf
+        - asset: assets/fonts/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Bold.ttf
+        - asset: assets/fonts/NotoSans-Light.ttf
+        - asset: assets/fonts/NotoSans-Medium.ttf
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-SemiBold.ttf
+    - family: NunitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans-Bold.ttf
+        - asset: assets/fonts/NunitoSans-Light.ttf
+        - asset: assets/fonts/NunitoSans-Regular.ttf
+        - asset: assets/fonts/NunitoSans-SemiBold.ttf
 
   uses-material-design: true
