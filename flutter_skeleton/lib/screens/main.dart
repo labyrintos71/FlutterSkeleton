@@ -18,13 +18,14 @@ class MainPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextNotoB(
+            Text(
               'https://reqres.in/ REST API TEST',
             ),
             Text(
               '123',
               style: Theme.of(context).textTheme.title,
             ),
+            TextNoto("안녕",16,type: TextType.Bold,);
             RaisedButton(
               child: Text("다음 페이지로 이동"),
               onPressed: () {
