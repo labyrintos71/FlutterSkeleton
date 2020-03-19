@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:npskeleton/viewmodels/example.dart';
 
 class UIProvider with ChangeNotifier {
-  bool startedLoading = false;
-  bool firstAnimationFinished = false;
-  bool dataAvailable = false;
-  
-  initLoadButton() {
-    startedLoading = false;
-    firstAnimationFinished = false;
-    dataAvailable = false;
+  ExampleUI example;
+  init() {
+    example = ExampleUI(this.refresh());
   }
 
-  setBool(String valname, bool value) {
-    switch (valname) {
-      case "startedLoading":
-        startedLoading = value;
-        break;
-      case "dataAvailable":
-        dataAvailable = value;
-        break;
-      case "firstAnimationFinished":
-        firstAnimationFinished = value;
-        break;
-    }
-    notifyListeners();
+  refresh() {
+    this.notifyListeners();
   }
 }

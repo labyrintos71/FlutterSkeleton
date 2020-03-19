@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
                 Provider.of<ReqResProvider>(context, listen: false).loadUser(2);
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => SubPage()));
-                Provider.of<UIProvider>(context, listen: false)
+                Provider.of<UIProvider>(context, listen: false).example
                     .initLoadButton();
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TextFormPage()));

@@ -36,24 +36,20 @@ class LaunchApp extends StatelessWidget {
                   ReqResProvider previous) =>
               ReqResProvider(root),
         ),
-
-        // StreamProvider<User>(
-        //   create: (_) => ReqResProvider().loaduser(),
-        // )
       ],
       child: InitPage(),
-    );  
+    );
   }
 }
 
 class InitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeProvider>(context);
+    Provider.of<UIProvider>(context).init();
     return BackGestureWidthTheme(
       child: MaterialApp(
         title: 'Flutter Skeleton',
-        theme: theme.getTheme(),
+        theme: Provider.of<ThemeProvider>(context).getTheme(),
         debugShowCheckedModeBanner: false,
         home: MainPage(),
       ),

@@ -38,12 +38,14 @@ class LoadStuffButton extends StatelessWidget {
       Track("childIndex").add(durationPart2, ConstantTween(2))
     ]);
 
-    final playSecondAnimation = ui.dataAvailable && ui.firstAnimationFinished;
+    final playSecondAnimation =
+        ui.example.dataAvailable && ui.example.firstAnimationFinished;
 
     return GestureDetector(
       onTap: _clickLoadStuff,
       child: ControlledAnimation(
-        playback: !ui.startedLoading ? Playback.PAUSE : Playback.PLAY_FORWARD,
+        playback:
+            !ui.example.startedLoading ? Playback.PAUSE : Playback.PLAY_FORWARD,
         tween: tween1,
         duration: tween1.duration,
         animationControllerStatusListener: _listenToAnimationFinished,
@@ -65,15 +67,15 @@ class LoadStuffButton extends StatelessWidget {
 
   void _listenToAnimationFinished(status) {
     if (status == AnimationStatus.completed) {
-      ui.setBool("firstAnimationFinished", true);
+      ui.example.setBool("firstAnimationFinished", true);
     }
   }
 
   void _clickLoadStuff() {
-    ui.setBool("startedLoading", true);
+    ui.example.setBool("startedLoading", true);
     Future.delayed(Duration(milliseconds: 150 + Random().nextInt(2500)))
         .then((_) {
-      ui.setBool("dataAvailable", true);
+      ui.example.setBool("dataAvailable", true);
     });
   }
 
