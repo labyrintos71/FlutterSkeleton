@@ -1,13 +1,11 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:npskeleton/models/user.dart';
 import 'package:npskeleton/providers.dart/root.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';
 import 'package:npskeleton/providers.dart/ui.dart';
 import 'package:npskeleton/screens/main.dart';
-import 'package:npskeleton/viewmodels/authservice.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -38,15 +36,7 @@ class LaunchApp extends StatelessWidget {
                   ReqResProvider previous) =>
               ReqResProvider(root),
         ),
-        ProxyProvider<ReqResProvider, AuthenticationService>(
-          update: (BuildContext context, ReqResProvider root,
-                  AuthenticationService previous) =>
-              AuthenticationService(root),
-        ),
-        StreamProvider<User>(
-          create: (_) =>
-              Provider.of<AuthenticationService>(_, listen: false).user,
-        )
+
         // StreamProvider<User>(
         //   create: (_) => ReqResProvider().loaduser(),
         // )

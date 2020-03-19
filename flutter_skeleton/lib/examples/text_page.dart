@@ -61,7 +61,7 @@ class TextFormPage extends StatelessWidget {
           errorText: 'passwords must have at least one special character')
     ]);
 
-    final eamilField = TextFormField(
+    final emailField = TextFormField(
       onFieldSubmitted: (str) => _formKey.currentState.validate(),
       validator: passwordValidator,
       maxLength: 30,
@@ -100,7 +100,9 @@ class TextFormPage extends StatelessWidget {
                 Space(24),
                 roundBoxField,
                 Space(24),
-                boxField
+                boxField,
+                Space(24),
+                emailField
               ],
             ),
           )),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:npskeleton/examples/testpage.dart';
 import 'package:npskeleton/examples/text_page.dart';
 import 'package:npskeleton/providers.dart/reqres.dart';
 import 'package:npskeleton/providers.dart/theme.dart';

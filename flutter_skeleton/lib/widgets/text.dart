@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'const.dart';
+
 /// Lightw300 = FontWeight._(2);
 
 /// regular w400 = FontWeight._(3);
@@ -37,14 +39,19 @@ class TextMont extends StatelessWidget {
   final num size;
   final Color color;
   final TextType type;
+  final double height;
 
   TextMont(this.text,
-      {this.size, this.color = Colors.black, this.type = TextType.Medium});
+      {this.size = 16,
+      this.color = text_gray,
+      this.type = TextType.Medium,
+      this.height = 1.0});
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
+          height: height,
           color: color,
           fontSize: size.toDouble(),
           fontFamily: "Montserrat",
@@ -58,14 +65,19 @@ class TextNoto extends StatelessWidget {
   final num size;
   final Color color;
   final TextType type;
+  final double height;
 
   TextNoto(this.text,
-      {this.size, this.color = Colors.black, this.type = TextType.Medium});
+      {this.size = 16,
+      this.color = text_gray,
+      this.type = TextType.Medium,
+      this.height = 1.0});
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
+          height: height,
           color: color,
           fontSize: size.toDouble(),
           fontFamily: "NotoSans",
@@ -79,14 +91,19 @@ class TextNunito extends StatelessWidget {
   final num size;
   final Color color;
   final TextType type;
+  final double height;
 
   TextNunito(this.text,
-      {this.size, this.color = Colors.black, this.type = TextType.Medium});
+      {this.size = 16,
+      this.color = text_gray,
+      this.type = TextType.Medium,
+      this.height = 1.0});
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
+          height: height,
           color: color,
           fontSize: size.toDouble(),
           fontFamily: "NunitoSans",
