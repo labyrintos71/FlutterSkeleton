@@ -42,7 +42,7 @@ class LaunchApp extends StatelessWidget {
         // )
       ],
       child: InitPage(),
-    );
+    );  
   }
 }
 
